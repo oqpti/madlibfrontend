@@ -33,6 +33,7 @@ export default class Game extends React.Component{
         if (this.state.gameid != null){
             let data = {gameid:  this.state.gameid}
             this.fetchData(data).then(result => {
+                console.log(result)
                 this.setState({fromW1: result.words[0]})
                 this.setState({fromW2: result.words[1]})
                 this.setState({fromW3: result.words[2]})
@@ -42,33 +43,34 @@ export default class Game extends React.Component{
                 this.setState({fromW7: result.words[6]})
                 this.setState({fromW8: result.words[7]})
                 this.setState({turn: result.turn})
-                console.log(result.turn)
             });
             
             var input1 = document.getElementById("iw1");
             var input2 = document.getElementById("iw2");
             var input3 = document.getElementById("iw3");
             var input4 = document.getElementById("iw4");
+            console.log(this.state.player);
+            console.log(this.state.turn);
             
-            if (this.state.player === 1 && this.state.turn === 1){
+            if (this.state.player == 1 && this.state.turn == 1){
                 input1.style.visibility = "visible"
             }
             else {
                 input1.style.visibility = "hidden"
             }
-            if (this.state.player === 2 && this.state.turn === 2){
+            if (this.state.player == 2 && this.state.turn == 2){
                 input2.style.visibility = "visible"
             }
             else {
                 input2.style.visibility = "hidden"
             }
-            if (this.state.player === 3 && this.state.turn === 3){
+            if (this.state.player == 3 && this.state.turn == 3){
                 input3.style.visibility = "visible"
             }
             else {
                 input3.style.visibility = "hidden"
             }
-            if (this.state.player === 4 && this.state.turn === 4){
+            if (this.state.player == 4 && this.state.turn == 4){
                 input4.style.visibility = "visible"
             }
             else {
@@ -96,7 +98,7 @@ export default class Game extends React.Component{
         this.setState({toW2: event.target.value})
     }
     submitWords = () => {
-        let data = {word1: this.state.toW1, word2: this.state.toW2}
+        let data = {gameid: this.state.gameid, word1: this.state.toW1, word2: this.state.toW2}
         fetch('http://localhost:5000/sendWords', {
             method: 'POST',
             mode: 'cors',
@@ -121,8 +123,8 @@ export default class Game extends React.Component{
                     <p>Player: {words.player}</p>
                     <p>Turn: {words.turn}</p>
                 </div>
-                <div class="row" id="content">
-                    <div class ="col-8">Today, every student has a computer small enough to fit into his
+                <div className="row" id="content">
+                    <div className ="col-8">Today, every student has a computer small enough to fit into his
                         {words.fromW1}. He can solve any math problem by simply 
                         pushing the computer’s little {words.fromW2}.
                         Computers can add, multiply, divide, and {words.fromW3}. They can also 
@@ -135,25 +137,24 @@ export default class Game extends React.Component{
                         <div className="inputwrapper" id="iw1">
                             <input type="text" placeholder="noun" value={this.state.toW1} onChange={this.toW1Handle}/>
                             <input type="text" placeholder="plural noun" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}/>Submit<button/>
+                            <button onClick={this.submitWords}>Submit</button>
                         </div>
                         <div className="inputwrapper" id="iw2">
                             <input type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
                             <input type="text" placeholder="verb, present tense" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}/>Submit<button/>
+                            <button onClick={this.submitWords}>Submit</button>
                         </div>
                         <div className="inputwrapper" id="iw3">
                             <input type="text" placeholder="body part, plural" value={this.state.toW1} onChange={this.toW1Handle}/>
                             <input type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}/>Submit<button/>
+                            <button onClick={this.submitWords}>Submit</button>
                         </div>
                         <div className="inputwrapper" id="iw4">
                             <input type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
                             <input type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}/>Submit<button/>
+                            <button onClick={this.submitWords}>Submit</button>
                         </div>
                     </div>
-                    <div class ="col-2"></div>
                 </div>
             </div>
         );
