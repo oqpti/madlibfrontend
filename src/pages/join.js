@@ -38,7 +38,7 @@ export default class Join extends Component {
     }
 
     async joinGame(data = {}) {
-        let response = await fetch('http://localhost:5000/join', {
+        let response = await fetch('http://3.14.88.17:5001/join', {
             method: 'POST',
             mode: 'cors',
             headers: {

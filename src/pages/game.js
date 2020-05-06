@@ -50,9 +50,9 @@ export default class Game extends React.Component{
             var input3 = document.getElementById("iw3");
             var input4 = document.getElementById("iw4");
             var gb1 = document.getElementById("gb1");
-            var gb2 = document.getElementById("gb1");
-            var gb3 = document.getElementById("gb1");
-            var gb4 = document.getElementById("gb1");
+            var gb2 = document.getElementById("gb2");
+            var gb3 = document.getElementById("gb3");
+            var gb4 = document.getElementById("gb4");
             console.log(this.state.player);
             console.log(this.state.turn);
             
@@ -101,7 +101,7 @@ export default class Game extends React.Component{
     }
 
     async fetchData(data = {}) {
-        let response = await fetch('http://localhost:5000/getGameInfo', {
+        let response = await fetch('http://3.14.88.17:5001/getGameInfo', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -120,7 +120,7 @@ export default class Game extends React.Component{
     }
     submitWords = () => {
         let data = {gameid: this.state.gameid, word1: this.state.toW1, word2: this.state.toW2}
-        fetch('http://localhost:5000/sendWords', {
+        fetch('http://3.14.88.17:5001/sendWords', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -179,7 +179,7 @@ export default class Game extends React.Component{
                             </div>
                             <div className="inputwrapper" id="iw4">
                             <div className="innerWrapper">
-                                <input className="wordInput" type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
+                                <input className="wordInput" type="text" placeholder="plural noun" value={this.state.toW1} onChange={this.toW1Handle}/>
                                 <input className="wordInput" type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
                                 </div>
                                 <div id="gb4" className="gameButton" onClick={this.submitWords}>

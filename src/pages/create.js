@@ -36,7 +36,7 @@ export default class Create extends Component {
     }
 
     async createGame(data = {}) {
-        let response = await fetch('http://localhost:5000/create', {
+        let response = await fetch('http://3.14.88.17:5001/create', {
             method: 'POST',
             mode: 'cors',
             headers: {
