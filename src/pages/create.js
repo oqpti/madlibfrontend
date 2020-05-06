@@ -56,14 +56,17 @@ export default class Create extends Component {
             redirect = <div/>;
         }
         return (
-            <div className="createContainer">
-                <p>Fill out the options below</p>
-                <p>Room Password:</p>
-                <input type='text' id='1' placeholder='password123' value={this.state.gameid} onChange={this.handleChange}/>
-                <p>Number of Players:</p>
-                <input type='text' id='2' placeholder='3' value={this.state.maxplayers} onChange={this.handleChange}/>
-                <button onClick={this.handleSubmit}>Create Room</button>
-                {redirect}
+            <div style={{height: this.props.dim.height, width: this.props.dim.width}}>
+                <div className="createContainer">
+                    <p>Fill out the options below</p>
+                    <p className="createText">Room Password:</p>
+                    <input className="createInput" type='text' id='1' placeholder='password123' value={this.state.gameid} onChange={this.handleChange}/>
+                    <p className="createText">Number of Players:</p>
+                    <input className="createInput" type='text' id='2' placeholder='3' value={this.state.maxplayers} onChange={this.handleChange}/>
+                    <div className="createButton" onClick={this.handleSubmit}>
+                        <p className="createButtonText">Create Game</p></div>
+                    {redirect}
+                </div>
             </div>
         );
     }

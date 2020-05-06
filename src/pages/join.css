@@ -1,0 +1,29 @@
+.joinContainer {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(140, 194, 255);
+}
+.descWrapper {
+    width: 300px;
+    text-align: center;
+}
+.joinButton {
+    height: 42px;
+    width: 110px;
+    border-radius: 10px;
+    background-color: rgb(75, 51, 141);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.joinButton:hover {
+    background-color: rgb(126, 117, 150);
+}
+.joinButtonText {
+    color: white;
+}

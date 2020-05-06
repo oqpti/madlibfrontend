@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import "./join.css";
+
 export default class Join extends Component {
     constructor() {
         super();
@@ -55,11 +57,16 @@ export default class Join extends Component {
             redirect = <div/>;
         }
         return (
-            <div>
-                <p>Join Page</p>
-                <p>Room Password:</p>
-                <input type='text' id='1' placeholder='password123' value={this.state.gameid} onChange={this.handleChange}/>
-                <button onClick={this.handleSubmit}>Join Room</button>
+            <div style={{width: this.props.dim.width, height: this.props.dim.height}}>
+                <div className="joinContainer">
+                    <div className="descWrapper">
+                        <p className="">Enter in the game password that was provided to you by the host of the game in the text box below.</p>
+                    </div>
+                    <p>Game Password:</p>
+                    <input type='text' id='1' placeholder='password123' value={this.state.gameid} onChange={this.handleChange}/>
+                    <div className="joinButton" onClick={this.handleSubmit}>
+                        <p className="joinButtonText">Join Game</p></div>
+                </div>
                 {redirect}
             </div>
         );

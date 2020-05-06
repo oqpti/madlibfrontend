@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./game.css";
 //only one template so this the page for it
 
 export default class Game extends React.Component{
@@ -49,32 +49,53 @@ export default class Game extends React.Component{
             var input2 = document.getElementById("iw2");
             var input3 = document.getElementById("iw3");
             var input4 = document.getElementById("iw4");
+            var gb1 = document.getElementById("gb1");
+            var gb2 = document.getElementById("gb1");
+            var gb3 = document.getElementById("gb1");
+            var gb4 = document.getElementById("gb1");
             console.log(this.state.player);
             console.log(this.state.turn);
             
             if (this.state.player == 1 && this.state.turn == 1){
                 input1.style.visibility = "visible"
+                input1.style.height = "100px"
+                gb1.style.marginTop = "15px"
             }
             else {
                 input1.style.visibility = "hidden"
+                input1.style.height = "0px"
+                gb1.style.marginTop = "0px"
+                
             }
             if (this.state.player == 2 && this.state.turn == 2){
                 input2.style.visibility = "visible"
+                input2.style.height = "100px"
+                gb2.style.marginTop = "15px"
             }
             else {
                 input2.style.visibility = "hidden"
+                input2.style.height = "0px"
+                gb2.style.marginTop = "0px"
             }
             if (this.state.player == 3 && this.state.turn == 3){
                 input3.style.visibility = "visible"
+                input3.style.height = "100px"
+                gb3.style.marginTop = "15px"
             }
             else {
                 input3.style.visibility = "hidden"
+                gb3.style.marginTop = "0px"
+                input3.style.height = "0px"
             }
             if (this.state.player == 4 && this.state.turn == 4){
                 input4.style.visibility = "visible"
+                input4.style.height = "100px"
+                gb4.style.marginTop = "15px"
             }
             else {
                 input4.style.visibility = "hidden"
+                gb4.style.marginTop = "0px"
+                input4.style.height = "0px"
             }
         }
     }
@@ -113,49 +134,59 @@ export default class Game extends React.Component{
 
     render(){
         let words = this.state
-        return (       
-            <div>  
-                <div class="row" id="title">
-                    <div class ="col-2"></div>
-                    <div class ="col-8"><h1>The Magic Computer</h1></div>
-                    <div class ="col-2"></div>
-                    <p>GameID: {words.gameid}</p>
-                    <p>Player: {words.player}</p>
-                    <p>Turn: {words.turn}</p>
-                </div>
-                <div className="row" id="content">
-                    <div className ="col-8">Today, every student has a computer small enough to fit into his
-                        {words.fromW1}. He can solve any math problem by simply 
-                        pushing the computer’s little {words.fromW2}.
-                        Computers can add, multiply, divide, and {words.fromW3}. They can also 
-                        {words.fromW4} better than a human. Some computers are 
-                        {words.fromW5}. Others have a/an 
-                        {words.fromW6}
-                        screen that shows all kinds of {words.fromW7} and 
-                        {words.fromW8} figures. 
-                        
-                        <div className="inputwrapper" id="iw1">
-                            <input type="text" placeholder="noun" value={this.state.toW1} onChange={this.toW1Handle}/>
-                            <input type="text" placeholder="plural noun" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}>Submit</button>
+        return (
+            <div style={{height: this.props.dim.height, width: this.props.dim.width}}>   
+                <div className="gameContainer">  
+                   
+                        <h1>The Magic Computer</h1>
+                    
+                    
+                        <div className ="storyWrapper">
+                            <p className="storyText">Today, every student has a computer small enough to fit into his
+                            <p className="storyWord1">{words.fromW1}</p>. He can solve any math problem by simply 
+                            pushing the computer’s little <p className="storyWord1">{words.fromW2}</p>.
+                            Computers can add, multiply, divide, and <p className="storyWord1">{words.fromW3}</p>. They can also 
+                            <p className="storyWord2">{words.fromW4}</p> better than a human. Some computers are 
+                            <p className="storyWord1">{words.fromW5}</p>. Others have a/an 
+                            <p className="storyWord2">{words.fromW6}</p>
+                            screen that shows all kinds of <p className="storyWord2">{words.fromW7}</p> and 
+                            <p className="storyWord2">{words.fromW8}</p> figures.</p>
                         </div>
-                        <div className="inputwrapper" id="iw2">
-                            <input type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
-                            <input type="text" placeholder="verb, present tense" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}>Submit</button>
-                        </div>
-                        <div className="inputwrapper" id="iw3">
-                            <input type="text" placeholder="body part, plural" value={this.state.toW1} onChange={this.toW1Handle}/>
-                            <input type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}>Submit</button>
-                        </div>
-                        <div className="inputwrapper" id="iw4">
-                            <input type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
-                            <input type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
-                            <button onClick={this.submitWords}>Submit</button>
-                        </div>
+                            
+                            <div className="inputwrapper" id="iw1">
+                            <div className="innerWrapper">
+                                <input className="wordInput" type="text" placeholder="noun" value={this.state.toW1} onChange={this.toW1Handle}/>
+                                <input className="wordInput" type="text" placeholder="plural noun" value={this.state.toW2} onChange={this.toW2Handle}/>
+                                </div>
+                                <div id="gb1" className="gameButton" onClick={this.submitWords}>
+                                    <p className="gameButtonText">Submit Words</p></div>
+                            </div>
+                            <div className="inputwrapper" id="iw2">
+                                <div className="innerWrapper">
+                                    <input className="wordInput" type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
+                                    <input className="wordInput" type="text" placeholder="verb, present tense" value={this.state.toW2} onChange={this.toW2Handle}/>
+                                </div>
+                                <div id="gb2" className="gameButton" onClick={this.submitWords}>
+                                    <p className="gameButtonText">Submit Words</p></div>
+                            </div>
+                            <div className="inputwrapper" id="iw3">
+                            <div className="innerWrapper">
+                                <input className="wordInput" type="text" placeholder="body part, plural" value={this.state.toW1} onChange={this.toW1Handle}/>
+                                <input className="wordInput" type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
+                                </div>
+                                <div id="gb3" className="gameButton" onClick={this.submitWords}>
+                                    <p className="gameButtonText">Submit Words</p></div>
+                            </div>
+                            <div className="inputwrapper" id="iw4">
+                            <div className="innerWrapper">
+                                <input className="wordInput" type="text" placeholder="verb, present tense" value={this.state.toW1} onChange={this.toW1Handle}/>
+                                <input className="wordInput" type="text" placeholder="adjective" value={this.state.toW2} onChange={this.toW2Handle}/>
+                                </div>
+                                <div id="gb4" className="gameButton" onClick={this.submitWords}>
+                                    <p className="gameButtonText">Submit Words</p></div>
+                            </div>
+                       
                     </div>
-                </div>
             </div>
         );
     }

@@ -30,13 +30,20 @@ function getWindowDimensions() {
   }
 
 function App() {
+  let dim = useWindowDimensions()
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={Splash}/>
-        <Route exact path='/create' component={Create}/>
-        <Route exact path='/join' component={Join}/>
-        <Route exact path='/game/:gameid/:player' component={Game}/>
+        <Route exact path='/'>
+          <Splash dim={dim}/>
+        </Route>
+        <Route exact path='/create'>
+          <Create dim={dim}/>
+        </Route>
+        <Route exact path='/join'>
+          <Join dim={dim}/>
+        </Route>
+        <Route exact path='/game/:gameid/:player' render={(props) => <Game dim={dim} {...props}/>}/>
       </Switch>
     </Router>
   );

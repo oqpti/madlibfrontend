@@ -1,3 +1,62 @@
 .inputwrapper {
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 0px;
+}
+.gameContainer {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(140, 194, 255);
+}
+.storyWrapper {
+    width: 500px;
+    text-align: center;
+}
+.storyText {
+    font-size: 1.1em;
+}
+.innerWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.gameButton {
+    height: 44px;
+    width: 130px;
+    border-radius: 10px;
+    background-color: rgb(75, 51, 141);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+.gameButton:hover {
+    background-color: rgb(126, 117, 150);
+}
+.gameButtonText {
+    color: white;
+    font-size: 1em;
+}
+.wordInput {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.storyWord1 {
+    display: inline;
+    margin-left: 4px;
+    color: rgb(75, 51, 141);
+}
+.storyWord2 {
+    display: inline;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: rgb(75, 51, 141);
 }
